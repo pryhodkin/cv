@@ -1,106 +1,104 @@
-#import "moderncv.typ": *
+#import "template.typ": cv_heading, cv_section, cv_skillset, cv_entry
 
-#show: project.with(
-  title: "DevOps Engineer",
-  author: "Yaroslav Prykhodko",
-  github: "pryhodkin",
-  phone: "+38 *** ** ** **",
-  email: "pryhodkin.work@gmail.com",
-  linkedin: "pryhodkin"
+#set page(
+  paper: "a4",
+  margin: (top: 1.5cm, right: 1.5cm, bottom: 1cm, left: 1.5cm),
+  // fill: rgb("#e0e0e0"),
 )
 
-= Education
+#set text(
+  font: ("CMU Serif"),
+  size: 0.8em,
+)
 
-#cventry(
-  start: (month: "October", year: 2023),
-  end: (month: "June", year: 2025),
-  role: [Computer Science],
-  place: "Taras Shevchenko National University of Kyiv, M.Sc."
-)[
-  #v(1em)
-]
+#let author = "Yaroslav Prykhodko"
+#let title = "DevOps Engineer"
+#let github = "pryhodkin"
+#let email = "pryhodkin.work@gmail.com"
+#let linkedin = "pryhodkin"
 
-#cventry(
-  start: (month: "September", year: 2019),
-  end: (month: "June", year: 2023),
-  role: [Computer Science],
-  place: "Taras Shevchenko National University of Kyiv, B.Sc."
-)[
-  #v(1em)
-    Group prof-org.
-]
+#cv_heading(author, title, linkedin, email, github)
 
-#cventry(
-  start: (month: "September", year: 2015),
-  end: (month: "June", year: 2019),
-  role: [Physics, math & informatics],
-  place: "Ukrainian Physical and Mathematical Lyceum of Taras Shevchenko National University, High School Diploma"
-)[
-  #v(1em)
-    A few times winner of the 3rd stage of the All-Ukrainian Olympiads in mathematics,
-  physics, web design.
-]
 
-= Work Experience
+#cv_section("Work Experience")
 
-#cventry(
+#cv_entry([
+    My responsibility is to setup and support the reliable cloud environment using various of technologies such as Azure Kubernenes Service, Prometheus, Grafana and others with industry best practices such as security care using Hashicorp Vault, Certificate Manager etc. Also I build pipelines to build, test, deploy and deliver to customer main company product - CompatibL Risk Platform. Based on customer needs I customize the external software configurations to make it fit requirements.
+    - For some customers I worked with a specific requirements to deploy the product on their cloud provider/technology including AWS ECS, AKS, ACA.
+    - I have an enperience working with different teams with their own workflows moving from chaos hand made deployments to automated solutions.
+    - Designed and developed some modules of a risk management platform.
+    - Optimized applications for CI/CD, containers, and cloud deployments, working with a broad range of technologies outside typical DevOps scope to ensure smooth integration and deployment across development and operations teams.
+  ],
+  role: "DevOps Engineer, Software Developer",
   start: (month: "June", year: 2021),
   end: (month: "", year: "Present"),
-  role: [DevOps Engineer, Software Developer],
-  place: "CompatibL"
-)[
-  #v(1em)
-    My responsibily is to setup and support the reliable cloud environment using various of technologies such as
-  Azure Kubernenes Service, prometheus, grafana and others with industry best practices such as security care using Hashicorp Vault, Certificate Manager etc. Also I build pipelines to build, test, deploy and deliver to customer main company product - CompatibL Risk Platform. Based on customer needs I customize the external software configurations to make it fit requirements.
-]
+  place: "CompatibL",
+  icon: "compatibl.png"
+)
 
-#cventry(
+#v(1em)
+
+#cv_entry([
+    - Informatics, physics, math olympiad instructor, member of the jury. Supervisor of informatics room equipment.
+  ],
+  role: "Laboratory assistant",
   start: (month: "Ferbuary", year: 2020),
   end: (month: "May", year: 2020),
-  role: [Laboratory assistant],
   place: "Ukrainian Physical and Mathematical Lyceum of Taras Shevchenko National University",
-)[
-  #v(1em)
-    Informatics, physics, math olympiad instructor.
-  Supervisor of informatics room equipment.
-]
+  icon: "upml-knu.png"
+)
 
-= Technical Skills
 
-#cvcol[
-  ==== Programming Languages
+#cv_section("Education")
 
-  #grid(
-    columns: (1fr, 1fr, 1fr),
-    row-gutter: 0.5em,
-    [- C\#],
-    [- Bash],
-    [- Python],
-    [- JavaScript]
-  )
-]
+#cv_entry("",
+  role: "M.Sc. in Computer Science",
+  start: (month: "September", year: 2023),
+  end: (month: "June", year: 2025),
+  place: "Taras Shevchenko National University of Kyiv",
+  icon: "knu.png"
+)
 
-#cvcol[
-  ==== Technologies
+#cv_entry("",
+  role: "B.Sc. in Computer Science",
+  start: (month: "September", year: 2019),
+  end: (month: "June", year: 2023),
+  place: "Taras Shevchenko National University of Kyiv",
+  icon: "knu.png"
+)
 
-  #grid(
-    columns: (1fr, 1fr, 1fr),
-    row-gutter: 0.5em,
-    [- Docker],
-    [- Kubernetes (mainly AKS)],
-    [- Linux],
-    [- Helm],
-    [- MongoDB],
-    [- Redis],
-    [- RabbitMQ],
-    [- Prometheus],
-    [- Grafana],
-    [- Mailhog/Maildev],
-    [- TeamCity (CI/CD)],
-    [- Azure ]
-  )
-]
+#cv_entry([
+    A few times winner of the 3rd stage of the All-Ukrainian Olympiads in mathematics, physics, web design.
+  ],
+  role: "High School Diploma",
+  start: (month: "September", year: 2015),
+  end: (month: "June", year: 2019),
+  place: "Ukrainian Physical and Mathematical Lyceum of Taras Shevchenko National University",
+  icon: "upml-knu.png"
+)
 
-#v(1fr)
 
-#align(center)[_(Last updated: September 2023)_]
+#cv_section("Soft skills")
+
+#cv_skillset("Communication"  ,  skills: ("I can communicate with people of different levels of technical knowledge",))
+#cv_skillset("Problem-solving",  skills: ("I can solve problems quickly and efficiently",))
+#cv_skillset("Adaptability"   ,  skills: ("I can adapt to new environments and learn new technologies quickly",))
+#cv_skillset("Teamwork"       ,  skills: ("I am a team player with leadership experience, capable of both contributing to and leading teams.",))
+#cv_skillset("Spoken languages", skills: ("Ukrainian (native)", "English (B2)"))
+
+
+#cv_section("Hard skills")
+
+#cv_skillset("Languages",                     skills: ("C#", "Bash", "Python", "JavaScript/TypeScript", "Go", "Make", "HCL"))
+#cv_skillset("CI/CD",                         skills: ("TeamCity", "GitHub Actions"))
+#cv_skillset("Infrastrusture as code",        skills: ("Terraform",))
+#cv_skillset("Reverse proxy and web servers", skills: ("Nginx", "Traefik"))
+#cv_skillset("Databases",                     skills: ("PostgreSQL", "MySQL", "MongoDB", "Redis"))
+#cv_skillset("Cloud providers",               skills: ("AWS","Azure"))
+#cv_skillset("Container Orchestration",       skills: ("Docker", "Kubernetes"))
+#cv_skillset("Azure-based technologies",      skills: ("AKS", "DNS Zones", "Service Principal"))
+#cv_skillset("AWS-based technologies",        skills: ("IAM", "VPC", "Lambda", "S3", "ECS", "ECR", "CloudWatch"))
+#cv_skillset("Kubernenes-based technologies", skills: ("Helm", "ArgoCD", "Cert-Manager", "HashiCorp Vault", "Keda"))
+#cv_skillset("Networking",                    skills: ("TCP/IP", "DNS", "HTTP", "HTTPS", "CIDR", "Subnetting"))
+#cv_skillset("Monitoring",                    skills: ("Prometheus", "Grafana", "Loki", "Fluentd"))
+#cv_skillset("Others",                        skills: ("A plenty of tools common for python and dotnet ecosystems",))
