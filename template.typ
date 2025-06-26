@@ -1,7 +1,7 @@
 
 #let _contact(text, icon, url) = {
   align(top)[
-    #box(height: 1em, baseline: 20%)[#pad(right: 0.4em)[#image("icons/" + icon)]]
+    #box(height: 1em, baseline: 20%)[#image("icons/" + icon)]
     #link(url)[#text]
   ]
 }
@@ -13,13 +13,16 @@
 
     #if linkedin != "" {
       _contact(linkedin, "linkedin.svg", "https://linkedin.com/in" + linkedin)
+      v(-1em)
     }
     #if email != "" {
       _contact(email, "envelope-regular.svg", "mailto:" + email)
+      v(-1em)
     }
     #if github != "" {
       _contact(github, "github.svg", "https://github.com/" + github)
     }
+    #v(-2em)
   ]
 }
 
@@ -37,7 +40,7 @@
 }
 
 #let cv_section(name) = {
-    v(0.5em)
+    v(1em)
     text([#name], size: 1.2em, weight: 800)
     v(-1em)
     line(length: 100%)
@@ -48,7 +51,7 @@
   block[
     #text([#name: ], weight: 1000)
     #skills.join(", ").
-    #v(-0.4em)
+    #v(-0.5em)
   ]
 }
 
@@ -60,18 +63,19 @@
   role: [],
   icon: "") = {
   grid(
-    columns: (5%, 0.5cm, 1fr, 1fr),
+    columns: (5%, 0.2cm, 1fr, auto),
     align(center + horizon)[ #if icon != "" { image("icons/" + icon) } else { }],
     [],
     box[
       #block(text([#role], weight: 800))
+      #v(-0.5em)
       #block([#place])
     ],
     align(right + top)[
       #text[#start.month #start.year - #end.month #end.year]
     ]
   )
-
-  text([#description])
+  v(-0.8em)
+  text(description)
   v(-1em)
 }
